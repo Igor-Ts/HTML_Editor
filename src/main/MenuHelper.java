@@ -98,9 +98,9 @@ public class MenuHelper {
         addMenuItem(styleMenu, "Underline", new StyledEditorKit.UnderlineAction());
         addMenuItem(styleMenu, "Italic", new StyledEditorKit.ItalicAction());
         styleMenu.addSeparator();
-        addMenuItem(styleMenu, "Subscript", new SubscriptAction(""));
-        addMenuItem(styleMenu, "Superscript", new SuperscriptAction(""));
-        addMenuItem(styleMenu, "Strike Through", new StrikeThroughAction(""));
+        addMenuItem(styleMenu, "Subscript", new SubscriptAction("Subscript"));
+        addMenuItem(styleMenu, "Superscript", new SuperscriptAction("Superscript"));
+        addMenuItem(styleMenu, "Strike Through", new StrikeThroughAction("Strike Through"));
         styleMenu.addMenuListener(new TextEditMenuListener(view));
     }
 
