@@ -1,5 +1,9 @@
 package main;
 
+import main.actions.*;
+import main.listeners.TextEditMenuListener;
+import main.listeners.UndoMenuListener;
+
 import javax.swing.*;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.StyleConstants;
