@@ -80,4 +80,12 @@ public class View extends JFrame implements ActionListener {
         controller.exit();
     }
 
+    public boolean canUndo() {
+        return false;
+    }
+
+    public boolean canRedo() {
+        return false;
+    }
+
 }
