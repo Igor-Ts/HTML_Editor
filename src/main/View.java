@@ -2,8 +2,12 @@ package main;
 
 import main.listeners.FrameListener;
 import main.listeners.TabbedPaneChangeListener;
+import main.listeners.UndoListener;
 
 import javax.swing.*;
+import javax.swing.undo.CannotRedoException;
+import javax.swing.undo.CannotUndoException;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +18,9 @@ public class View extends JFrame implements ActionListener {
     private JTabbedPane tabbedPane = new JTabbedPane(); // it's panel with two tabs.
     private JTextPane htmlTextPane = new JTextPane(); // first tab. It'll component for visualize html editor.
     private JEditorPane plainTextPane = new JEditorPane(); // It'll component for html editor as text. He'll show html code(tags).
+
+    private UndoManager undoManager = new UndoManager();
+    private UndoListener undoListener = new UndoListener(undoManager);
 
     public View() {
         try {
@@ -81,11 +88,36 @@ public class View extends JFrame implements ActionListener {
     }
 
     public boolean canUndo() {
-        return false;
+        return undoManager.canUndo();
     }
 
     public boolean canRedo() {
-        return false;
+        return undoManager.canRedo();
     }
 
+    public void undo() {
+        // cancel previous action
+        try {
+            undoManager.undo();
+        } catch (CannotUndoException e){
+            ExceptionHandler.log(e);
+        }
+    }
+
+    public void redo() {
+        // return previous action
+        try {
+            undoManager.redo();
+        } catch (CannotRedoException e) {
+            ExceptionHandler.log(e);
+        }
+    }
+
+    public UndoListener getUndoListener() {
+        return undoListener;
+    }
+
+    public void resetUndo() {
+        undoManager.discardAllEdits();
+    }
 }
