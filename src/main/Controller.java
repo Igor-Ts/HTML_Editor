@@ -45,7 +45,7 @@ public class Controller {
 
     public void resetDocument() {
         if (document != null) {
-            document.removeDocumentListener((DocumentListener) view.getUndoListener());
+            document.removeUndoableEditListener(view.getUndoListener());
         }
         document = (HTMLDocument) new HTMLEditorKit().createDefaultDocument();
         document.addUndoableEditListener(view.getUndoListener());
@@ -64,12 +64,13 @@ public class Controller {
 
     public String getPlainText() {
         StringWriter writer = new StringWriter();
-        try {
-            new HTMLEditorKit().write(writer,document,0, document.getLength());
-        } catch (IOException | BadLocationException e) {
-            ExceptionHandler.log(e);
+        if (document != null) {
+            try {
+                new HTMLEditorKit().write(writer, document, 0, document.getLength());
+            } catch (Exception e) {
+                ExceptionHandler.log(e);
+            }
         }
-
         return writer.toString();
     }
 }

@@ -44,7 +44,12 @@ public class View extends JFrame implements ActionListener {
     }
 
     public void selectedTabChanged() {
-
+        // 0 - html tab, 1 - plain
+        switch (tabbedPane.getSelectedIndex()) {
+            case (0) -> controller.setPlainText(plainTextPane.getText());
+            case (1) -> plainTextPane.setText(controller.getPlainText());
+        }
+        resetUndo();
     }
 
     public void init() {
