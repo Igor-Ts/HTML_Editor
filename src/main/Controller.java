@@ -1,14 +1,10 @@
 package main;
 
-import javax.swing.event.DocumentListener;
-import javax.swing.text.AbstractDocument;
+import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 
 public class Controller {
 
@@ -91,7 +87,19 @@ public class Controller {
     }
 
     public void saveDocumentAs() {
-
+        try {
+            view.selectHtmlTab();
+            JFileChooser jFileChooser = new JFileChooser();
+            jFileChooser.setFileFilter(new HTMLFileFilter());
+            if (jFileChooser.showSaveDialog(view) == JFileChooser.APPROVE_OPTION) {
+                currentFile = jFileChooser.getSelectedFile();
+                view.setTitle(currentFile.getName());
+                FileWriter fileWriter = new FileWriter(currentFile);
+                new HTMLEditorKit().write(fileWriter, document, 0, document.getLength());
+            }
+        } catch (Exception e) {
+            ExceptionHandler.log(e);
+        }
     }
 
 }
