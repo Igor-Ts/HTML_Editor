@@ -8,7 +8,7 @@ import javax.swing.event.MenuListener;
 import java.awt.*;
 
 public class TextEditMenuListener implements MenuListener {
-    private View view;
+    private final View view;
 
     public TextEditMenuListener(View view) {
         this.view = view;
@@ -17,7 +17,7 @@ public class TextEditMenuListener implements MenuListener {
     @Override
     public void menuSelected(MenuEvent menuEvent) {
         JMenu jMenu = (JMenu) menuEvent.getSource();
-        Component [] menuComponents = jMenu.getMenuComponents();
+        Component[] menuComponents = jMenu.getMenuComponents();
         for (int i = 0; i < menuComponents.length; i++) {
             Component component = menuComponents[i];
             component.setEnabled(view.isHtmlTabSelected());

@@ -20,7 +20,7 @@ public class SuperscriptAction extends StyledEditorKit.StyledTextAction {
             MutableAttributeSet mutableAttributeSet = getStyledEditorKit(editor).getInputAttributes();
             SimpleAttributeSet simpleAttributeSet = new SimpleAttributeSet();
             StyleConstants.setSuperscript(simpleAttributeSet, !StyleConstants.isSuperscript(mutableAttributeSet));
-            setCharacterAttributes(editor,simpleAttributeSet,false);
+            setCharacterAttributes(editor, simpleAttributeSet, false);
         }
     }
 }

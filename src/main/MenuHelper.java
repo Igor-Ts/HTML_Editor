@@ -28,9 +28,9 @@ public class MenuHelper {
     }
 
     public static JMenuItem addMenuItem(JMenu parent, String text, Action action) {
-         JMenuItem jMenuItem = addMenuItem(parent,action);
-         jMenuItem.setName(text);
-         return jMenuItem;
+        JMenuItem jMenuItem = addMenuItem(parent, action);
+        jMenuItem.setName(text);
+        return jMenuItem;
     }
 
     public static void initHelpMenu(View view, JMenuBar menuBar) {
@@ -64,7 +64,7 @@ public class MenuHelper {
 
     }
 
-    public static void initColorMenu(View view, JMenuBar menuBar){
+    public static void initColorMenu(View view, JMenuBar menuBar) {
         JMenu colorMenu = new JMenu("Color");
         menuBar.add(colorMenu);
 
@@ -91,7 +91,7 @@ public class MenuHelper {
         alignMenu.addMenuListener(new TextEditMenuListener(view));
     }
 
-    public static void initStyleMenu(View view, JMenuBar menuBar){
+    public static void initStyleMenu(View view, JMenuBar menuBar) {
         JMenu styleMenu = new JMenu("Style");
         menuBar.add(styleMenu);
         addMenuItem(styleMenu, "Bold", new StyledEditorKit.BoldAction());

@@ -14,7 +14,6 @@ public class TabbedPaneChangeListener implements ChangeListener {
     }
 
 
-
     @Override
     public void stateChanged(ChangeEvent e) {
         view.selectedTabChanged();

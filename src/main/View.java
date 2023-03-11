@@ -25,7 +25,8 @@ public class View extends JFrame implements ActionListener {
     public View() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException r) {
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
+                 IllegalAccessException r) {
             ExceptionHandler.log(r);
         }
     }
@@ -69,13 +70,13 @@ public class View extends JFrame implements ActionListener {
 
     public void initMenuBar() {
         JMenuBar jMenuBar = new JMenuBar();
-        MenuHelper.initFileMenu(this,jMenuBar);
-        MenuHelper.initEditMenu(this,jMenuBar);
-        MenuHelper.initStyleMenu(this,jMenuBar);
-        MenuHelper.initAlignMenu(this,jMenuBar);
-        MenuHelper.initColorMenu(this,jMenuBar);
-        MenuHelper.initFontMenu(this,jMenuBar);
-        MenuHelper.initHelpMenu(this,jMenuBar);
+        MenuHelper.initFileMenu(this, jMenuBar);
+        MenuHelper.initEditMenu(this, jMenuBar);
+        MenuHelper.initStyleMenu(this, jMenuBar);
+        MenuHelper.initAlignMenu(this, jMenuBar);
+        MenuHelper.initColorMenu(this, jMenuBar);
+        MenuHelper.initFontMenu(this, jMenuBar);
+        MenuHelper.initHelpMenu(this, jMenuBar);
         getContentPane().add(jMenuBar, BorderLayout.NORTH);
 
     }
@@ -83,9 +84,9 @@ public class View extends JFrame implements ActionListener {
     // this method init all tabs in editor
     public void initEditor() {
         htmlTextPane.setContentType("text/html");
-        tabbedPane.add("HTML",new JScrollPane(htmlTextPane)); // first tab
-        tabbedPane.add("Text",new JScrollPane(plainTextPane)); // second tab
-        tabbedPane.setPreferredSize(new Dimension(200,200)); // panel dimension
+        tabbedPane.add("HTML", new JScrollPane(htmlTextPane)); // first tab
+        tabbedPane.add("Text", new JScrollPane(plainTextPane)); // second tab
+        tabbedPane.setPreferredSize(new Dimension(200, 200)); // panel dimension
         tabbedPane.addChangeListener(new TabbedPaneChangeListener(this)); // eventListener
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
     }
@@ -112,7 +113,7 @@ public class View extends JFrame implements ActionListener {
         // cancel previous action
         try {
             undoManager.undo();
-        } catch (CannotUndoException e){
+        } catch (CannotUndoException e) {
             ExceptionHandler.log(e);
         }
     }
@@ -148,6 +149,6 @@ public class View extends JFrame implements ActionListener {
     }
 
     public void showAbout() {
-        JOptionPane.showMessageDialog(this,"HTML_Editor","About",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "HTML_Editor", "About", JOptionPane.INFORMATION_MESSAGE);
     }
 }

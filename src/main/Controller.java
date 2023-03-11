@@ -45,16 +45,6 @@ public class Controller {
         view.update();
     }
 
-    public void setPlainText(String text) {
-        resetDocument();
-        StringReader reader = new StringReader(text);
-        try {
-            new HTMLEditorKit().read(reader, document, 0);
-        } catch (IOException | BadLocationException e) {
-            ExceptionHandler.log(e);
-        }
-    }
-
     public String getPlainText() {
         StringWriter writer = new StringWriter();
         if (document != null) {
@@ -65,6 +55,16 @@ public class Controller {
             }
         }
         return writer.toString();
+    }
+
+    public void setPlainText(String text) {
+        resetDocument();
+        StringReader reader = new StringReader(text);
+        try {
+            new HTMLEditorKit().read(reader, document, 0);
+        } catch (IOException | BadLocationException e) {
+            ExceptionHandler.log(e);
+        }
     }
 
     public void createNewDocument() {
@@ -119,7 +119,6 @@ public class Controller {
                 view.setTitle(currentFile.getName());
                 FileWriter fileWriter = new FileWriter(currentFile);
                 new HTMLEditorKit().write(fileWriter, document, 0, document.getLength());
-                System.out.println(currentFile.length());
             }
         } catch (Exception e) {
             ExceptionHandler.log(e);

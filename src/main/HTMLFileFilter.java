@@ -10,8 +10,7 @@ public class HTMLFileFilter extends FileFilter {
         if (file.isDirectory()) {
             return true;
         } else {
-            return (file.getName().toLowerCase(Locale.ROOT).endsWith(".html") ||
-                file.getName().toLowerCase(Locale.ROOT).endsWith(".htm"));
+            return (file.getName().toLowerCase(Locale.ROOT).endsWith(".html") || file.getName().toLowerCase(Locale.ROOT).endsWith(".htm"));
         }
     }
 

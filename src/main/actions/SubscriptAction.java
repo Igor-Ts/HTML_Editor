@@ -19,7 +19,7 @@ public class SubscriptAction extends StyledEditorKit.StyledTextAction {
             MutableAttributeSet mutableAttributeSet = getStyledEditorKit(editor).getInputAttributes();
             SimpleAttributeSet simpleAttributeSet = new SimpleAttributeSet();
             StyleConstants.setSubscript(simpleAttributeSet, !StyleConstants.isSubscript(mutableAttributeSet));
-            setCharacterAttributes(editor,simpleAttributeSet,false);
+            setCharacterAttributes(editor, simpleAttributeSet, false);
         }
     }
 }
